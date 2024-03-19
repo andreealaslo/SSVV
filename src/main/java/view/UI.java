@@ -1,10 +1,11 @@
 package view;
 
-import domain.Nota;
 import domain.Student;
 import domain.Tema;
+import domain.Nota;
 import service.Service;
 import validation.ValidationException;
+
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -17,7 +18,7 @@ public class UI {
 
     /**
      * Class constructor
-     * @param service - service-ul clasei
+     * @param service - tmp.service-ul clasei
      */
     public UI(Service service) {
         this.service = service;

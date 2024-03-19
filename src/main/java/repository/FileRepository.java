@@ -1,9 +1,9 @@
 package repository;
 
 /**
- * CRUD operations file repository interface
+ * CRUD operations file tmp.repository interface
  * @param <ID> - type E must have an attribute of type ID
- * @param <E> - type of entities saved in repository
+ * @param <E> - type of entities saved in tmp.repository
  */
 public interface FileRepository<ID, E extends HasID<ID>> {
 

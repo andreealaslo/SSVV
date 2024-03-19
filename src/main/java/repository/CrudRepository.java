@@ -2,9 +2,9 @@ package repository;
 import validation.ValidationException;
 
 /**
- * CRUD operations repository interface
+ * CRUD operations tmp.repository interface
  * @param <ID> - type E must have an attribute of type ID
- * @param <E> - type of entities saved in repository
+ * @param <E> - type of entities saved in tmp.repository
  */
 public interface CrudRepository<ID, E> {
     /**

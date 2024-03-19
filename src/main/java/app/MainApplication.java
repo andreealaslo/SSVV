@@ -1,18 +1,14 @@
 package app;
 
 
-import repository.NotaFileRepository;
-import repository.StudentFileRepository;
+import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
 import repository.TemaXMLRepo;
-import repository.NotaXMLRepo;
-import repository.TemaFileRepository;
 import service.Service;
 import validation.NotaValidator;
 import validation.StudentValidator;
 import validation.TemaValidator;
 import view.UI;
-
 
 
 public class MainApplication {

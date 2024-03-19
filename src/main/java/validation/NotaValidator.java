@@ -1,10 +1,12 @@
 package validation;
 
 
+import repository.StudentXMLRepo;
 import domain.Nota;
 import domain.Student;
 import domain.Tema;
-import repository.*;
+import repository.TemaXMLRepo;
+
 
 public class NotaValidator implements Validator<Nota> {
     private StudentXMLRepo studentFileRepository;
@@ -12,8 +14,8 @@ public class NotaValidator implements Validator<Nota> {
 
     /**
      * Class constructor
-     * @param studentFileRepository - repository student
-     * @param temaFileRepository - repository tema
+     * @param studentFileRepository - tmp.repository student
+     * @param temaFileRepository - tmp.repository tema
      */
     public NotaValidator(StudentXMLRepo studentFileRepository, TemaXMLRepo temaFileRepository) {
         this.studentFileRepository = studentFileRepository;

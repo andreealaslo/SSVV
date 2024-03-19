@@ -4,8 +4,11 @@ import curent.Curent;
 import domain.Nota;
 import domain.Student;
 import domain.Tema;
+import repository.NotaXMLRepo;
+import repository.StudentXMLRepo;
+import repository.TemaXMLRepo;
 
-import repository.*;
+
 import validation.NotaValidator;
 import validation.StudentValidator;
 import validation.TemaValidator;
@@ -34,11 +37,11 @@ public class Service {
 
     /**
      * Class Constructor
-     * @param studentFileRepository - repository student
+     * @param studentFileRepository - tmp.repository student
      * @param studentValidator - validator student
-     * @param temaFileRepository - repository tema
+     * @param temaFileRepository - tmp.repository tema
      * @param temaValidator - validator tema
-     * @param notaFileRepository - repository nota
+     * @param notaFileRepository - tmp.repository nota
      * @param notaValidator - validator nota
      */
     //public Service(StudentFileRepository studentFileRepository, StudentValidator studentValidator, TemaFileRepository temaFileRepository, TemaValidator temaValidator, NotaFileRepository notaFileRepository, NotaValidator notaValidator) {
