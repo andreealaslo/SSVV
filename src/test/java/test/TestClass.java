@@ -26,7 +26,7 @@ public class TestClass {
 //    }
 
     @Test
-    public void addStudent_Success() {
+    public void addStudentSuccess() {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
 //        String filenameStudent = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Studenti.xml";
