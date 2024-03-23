@@ -19,8 +19,14 @@ import static org.junit.Assert.assertFalse;
 public class TestClass {
     public static Service service;
 
-    @BeforeAll
-    public static void setup() {
+//    @BeforeAll
+//    public static void setup() {
+//
+//
+//    }
+
+    @Test
+    public void addStudent_Success() {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
         String filenameStudent = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Studenti.xml";
@@ -32,11 +38,6 @@ public class TestClass {
         NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
         NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
         TestClass.service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
-
-    }
-
-    @Test
-    public void addStudent_Success() {
 
         String id = "test";
         String nume = "ana";
