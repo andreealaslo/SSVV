@@ -3,6 +3,7 @@ package test;
 import domain.Student;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
 import repository.NotaXMLRepo;
 import repository.StudentXMLRepo;
 import repository.TemaXMLRepo;
@@ -15,24 +16,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.assertFalse;
+
 @RunWith(JUnit4.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestClass {
-    public static Service service;
+    public  Service service;
 
-//    @BeforeAll
-//    public static void setup() {
-//
-//
-//    }
-
-    @Test
-    public void addStudentSuccess() {
+    @BeforeAll
+    public void setup() {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-//        String filenameStudent = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Studenti.xml";
-//        String filenameTema = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Teme.xml";
-//        String filenameNota = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Note.xml";
-
         String filenameStudent = "fisiere/Studenti.xml";
         String filenameTema = "fisiere/Teme.xml";
         String filenameNota = "fisiere/Note.xml";
@@ -41,7 +34,11 @@ public class TestClass {
         TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
         NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
         NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
-        TestClass.service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+        service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+    }
+
+    @Test
+    public void addStudentSuccess() {
 
         String id = "test";
         String nume = "ana";
@@ -54,7 +51,7 @@ public class TestClass {
             System.out.println(exception);
             assertFalse(true);
         }
-        assert(service.findStudent(id) != null);
+        assert (service.findStudent(id) != null);
 
     }
 }
