@@ -17,7 +17,7 @@ import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.assertFalse;
 
-@RunWith(JUnit4.class)
+//@RunWith(JUnit4.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TestClass {
     public  Service service;
