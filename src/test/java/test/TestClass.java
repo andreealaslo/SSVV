@@ -29,9 +29,13 @@ public class TestClass {
     public void addStudent_Success() {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
-        String filenameStudent = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Studenti.xml";
-        String filenameTema = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Teme.xml";
-        String filenameNota = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Note.xml";
+//        String filenameStudent = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Studenti.xml";
+//        String filenameTema = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Teme.xml";
+//        String filenameNota = "C:\\Users\\user\\Desktop\\SSVV\\LabAssiAsseProjectV02\\fisiere\\Note.xml";
+
+        String filenameStudent = "fisiere/Studenti.xml";
+        String filenameTema = "fisiere/Teme.xml";
+        String filenameNota = "fisiere/Note.xml";
 
         StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
         TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
