@@ -62,7 +62,7 @@ public class TestClass {
         NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
         service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
 
-        String id = ""; // Empty id
+        String id = "";
         String nume = "ana";
         int grupa = 934;
         String email = "aaaa@gmail.com";
@@ -73,7 +73,7 @@ public class TestClass {
             assertTrue(exception.getMessage().equals("Id incorect!"));
             return; // Test passed
         }
-        assertFalse(true); // Test failed if no exception was thrown
+        assertFalse(true);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class TestClass {
         NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
         service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
 
-        String id = null; // Null id
+        String id = null;
         String nume = "ana";
         int grupa = 934;
         String email = "aaaa@gmail.com";
@@ -97,7 +97,7 @@ public class TestClass {
             assertTrue(exception.getMessage().equals("Id incorect!"));
             return; // Test passed
         }
-        assertFalse(true); // Test failed if no exception was thrown
+        assertFalse(true);
     }
 
 //    @Test
@@ -145,7 +145,7 @@ public class TestClass {
         service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
 
         String id = "test1";
-        String nume = "ana"; // Valid name
+        String nume = "ana";
         int grupa = 934;
         String email = "aaaa@gmail.com";
         Student student = new Student(id, nume, grupa, email);
@@ -168,7 +168,7 @@ public class TestClass {
         service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
 
         String id = "test2";
-        String nume = ""; // Empty name
+        String nume = "";
         int grupa = 934;
         String email = "aaaa@gmail.com";
         Student student = new Student(id, nume, grupa, email);
@@ -178,7 +178,7 @@ public class TestClass {
             assertTrue(exception.getMessage().equals("Nume incorect!"));
             return; // Test passed
         }
-        assertFalse(true); // Test failed if no exception was thrown
+        assertFalse(true);
     }
 
     @Test
@@ -192,7 +192,7 @@ public class TestClass {
         service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
 
         String id = "test3";
-        String nume = null; // Null name
+        String nume = null;
         int grupa = 934;
         String email = "aaaa@gmail.com";
         Student student = new Student(id, nume, grupa, email);
@@ -202,7 +202,7 @@ public class TestClass {
             assertTrue(exception.getMessage().equals("Nume incorect!"));
             return; // Test passed
         }
-        assertFalse(true); // Test failed if no exception was thrown
+        assertFalse(true);
     }
 
     @Test
@@ -218,7 +218,7 @@ public class TestClass {
         String id = "test4";
         String nume = "ana";
         int grupa = 934;
-        String email = "aaaa@gmail.com"; // Valid email
+        String email = "aaaa@gmail.com";
         Student student = new Student(id, nume, grupa, email);
         try {
             service.addStudent(student);
@@ -241,7 +241,7 @@ public class TestClass {
         String id = "test5";
         String nume = "ana";
         int grupa = 934;
-        String email = ""; // Empty email
+        String email = "";
         Student student = new Student(id, nume, grupa, email);
         try {
             service.addStudent(student);
@@ -249,7 +249,7 @@ public class TestClass {
             assertTrue(exception.getMessage().equals("Email incorect!"));
             return; // Test passed
         }
-        assertFalse(true); // Test failed if no exception was thrown
+        assertFalse(true);
     }
 
     @Test
@@ -265,7 +265,7 @@ public class TestClass {
         String id = "test6";
         String nume = "ana";
         int grupa = 934;
-        String email = null; // Null email
+        String email = null;
         Student student = new Student(id, nume, grupa, email);
         try {
             service.addStudent(student);
@@ -273,7 +273,54 @@ public class TestClass {
             assertTrue(exception.getMessage().equals("Email incorect!"));
             return; // Test passed
         }
-        assertFalse(true); // Test failed if no exception was thrown
+        assertFalse(true);
+    }
+
+    @Test
+    public void addStudentWithValidGroupSuccess() {
+        StudentValidator studentValidator = new StudentValidator();
+        TemaValidator temaValidator = new TemaValidator();
+        StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
+        TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
+        NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
+        NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
+        service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+
+        String id = "test7";
+        String nume = "ana";
+        int grupa = 934;
+        String email = "aaaa@gmail.com";
+        Student student = new Student(id, nume, grupa, email);
+        try {
+            service.addStudent(student);
+        } catch (ValidationException exception) {
+            assertFalse(true);
+        }
+        assertTrue(service.findStudent(id) != null);
+    }
+
+    @Test
+    public void addStudentWithInvalidGroupFails() {
+        StudentValidator studentValidator = new StudentValidator();
+        TemaValidator temaValidator = new TemaValidator();
+        StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
+        TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
+        NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
+        NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
+        service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+
+        String id = "test8";
+        String nume = "ana";
+        int grupa = -1;
+        String email = "aaaa@gmail.com";
+        Student student = new Student(id, nume, grupa, email);
+        try {
+            service.addStudent(student);
+        } catch (ValidationException exception) {
+            assertTrue(exception.getMessage().equals("Grupa incorecta!"));
+            return; // Test passed
+        }
+        assertFalse(true);
     }
 
 }
