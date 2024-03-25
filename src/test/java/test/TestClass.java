@@ -205,4 +205,75 @@ public class TestClass {
         assertFalse(true); // Test failed if no exception was thrown
     }
 
+    @Test
+    public void addStudentWithValidEmailSuccess() {
+        StudentValidator studentValidator = new StudentValidator();
+        TemaValidator temaValidator = new TemaValidator();
+        StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
+        TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
+        NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
+        NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
+        service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+
+        String id = "test4";
+        String nume = "ana";
+        int grupa = 934;
+        String email = "aaaa@gmail.com"; // Valid email
+        Student student = new Student(id, nume, grupa, email);
+        try {
+            service.addStudent(student);
+        } catch (ValidationException exception) {
+            assertFalse(true);
+        }
+        assertTrue(service.findStudent(id) != null);
+    }
+
+    @Test
+    public void addStudentWithEmptyEmailFails() {
+        StudentValidator studentValidator = new StudentValidator();
+        TemaValidator temaValidator = new TemaValidator();
+        StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
+        TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
+        NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
+        NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
+        service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+
+        String id = "test5";
+        String nume = "ana";
+        int grupa = 934;
+        String email = ""; // Empty email
+        Student student = new Student(id, nume, grupa, email);
+        try {
+            service.addStudent(student);
+        } catch (ValidationException exception) {
+            assertTrue(exception.getMessage().equals("Email incorect!"));
+            return; // Test passed
+        }
+        assertFalse(true); // Test failed if no exception was thrown
+    }
+
+    @Test
+    public void addStudentWithNullEmailFails() {
+        StudentValidator studentValidator = new StudentValidator();
+        TemaValidator temaValidator = new TemaValidator();
+        StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
+        TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
+        NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
+        NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
+        service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+
+        String id = "test6";
+        String nume = "ana";
+        int grupa = 934;
+        String email = null; // Null email
+        Student student = new Student(id, nume, grupa, email);
+        try {
+            service.addStudent(student);
+        } catch (ValidationException exception) {
+            assertTrue(exception.getMessage().equals("Email incorect!"));
+            return; // Test passed
+        }
+        assertFalse(true); // Test failed if no exception was thrown
+    }
+
 }
