@@ -32,5 +32,6 @@ public class StudentValidator implements Validator<Student> {
         if(entity.getEmail().equals("")){
             throw new ValidationException("Email incorect!");
         }
+
     }
 }

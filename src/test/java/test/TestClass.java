@@ -100,39 +100,31 @@ public class TestClass {
         assertFalse(true);
     }
 
-//    @Test
-//    public void addStudentWithDuplicateIdFails() {
-//        StudentValidator studentValidator = new StudentValidator();
-//        TemaValidator temaValidator = new TemaValidator();
-//        StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
-//        TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
-//        NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
-//        NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
-//        service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
-//
-//        String id = "testfvdf"; // Existing id
-//        String nume = "ana";
-//        int grupa = 934;
-//        String email = "aaaa@gmail.com";
-//        Student student = new Student(id, nume, grupa, email);
-//
-//        // Add the student with the same ID first
-//        try {
-//            service.addStudent(student);
-//        } catch (ValidationException exception) {
-//            assertFalse(true); // Ensure the first addition was successful
-//        }
-//
-//        // Attempt to add another student with the same ID
-//        Student studentWithDuplicateId = new Student("testfvdf", "otherName", 999, "otheremail@example.com");
-//        try {
-//            service.addStudent(studentWithDuplicateId);
-//        } catch (ValidationException exception) {
-//            assertTrue(exception.getMessage().equals("Id already exists!"));
-//            return; // Test passed
-//        }
-//        assert (service.findStudent(id) == null);
-//    }
+    @Test
+    public void addStudentWithDuplicateIdFails() {
+        StudentValidator studentValidator = new StudentValidator();
+        TemaValidator temaValidator = new TemaValidator();
+        StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
+        TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
+        NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
+        NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
+        service = new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+
+        String id = "testfvdf";
+        String nume = "ana";
+        int grupa = 934;
+        String email = "aaaa@gmail.com";
+        Student student = new Student(id, nume, grupa, email);
+
+        try {
+             service.addStudent(student);
+        } catch (ValidationException exception) {
+            assertFalse(true);
+        }
+        Student studentWithDuplicateId = new Student("testfvdf", "otherName", 999, "otheremail@example.com");
+        Student result = service.addStudent(studentWithDuplicateId);
+        assert(result==studentWithDuplicateId);
+    }
 
     @Test
     public void addStudentWithValidNameSuccess() {
