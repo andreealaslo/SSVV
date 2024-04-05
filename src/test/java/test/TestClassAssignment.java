@@ -63,11 +63,37 @@ public class TestClassAssignment {
     @Test
     public void addAssignmentWithEmptyDescription(){
         setup();
-        Tema tema1 = new Tema("id1", "", 3,2);
+        Tema tema3 = new Tema("id1", "", 3,2);
         try {
-            service.addTema(tema1);
+            service.addTema(tema3);
         } catch (ValidationException exception) {
             assertTrue(exception.getMessage().equals("Descriere invalida!"));
+            return; // Test passed
+        }
+        assertFalse(true);
+    }
+
+    @Test
+    public void addAssignmentWithDeadlineSmallerThan0(){
+        setup();
+        Tema tema4 = new Tema("id4", "descriere", -1,2);
+        try {
+            service.addTema(tema4);
+        } catch (ValidationException exception) {
+            assertTrue(exception.getMessage().equals("Deadlineul trebuie sa fie intre 1-14."));
+            return; // Test passed
+        }
+        assertFalse(true);
+    }
+
+    @Test
+    public void addAssignmentWithDeadlineBiggerThan14(){
+        setup();
+        Tema tema5 = new Tema("id5", "descriere", 18,3);
+        try {
+            service.addTema(tema5);
+        } catch (ValidationException exception) {
+            assertTrue(exception.getMessage().equals("Deadlineul trebuie sa fie intre 1-14."));
             return; // Test passed
         }
         assertFalse(true);
