@@ -99,4 +99,42 @@ public class TestClassAssignment {
         assertFalse(true);
     }
 
+    @Test
+    public void addAssignmentWithPrimireSmallerThan0(){
+        setup();
+        Tema tema6 = new Tema("id6", "descriere", 2,-2);
+        try {
+            service.addTema(tema6);
+        } catch (ValidationException exception) {
+            assertTrue(exception.getMessage().equals("Saptamana primirii trebuie sa fie intre 1-14."));
+            return; // Test passed
+        }
+        assertFalse(true);
+    }
+    @Test
+    public void addAssignmentWithPrimireBiggerThan14(){
+        setup();
+        Tema tema7 = new Tema("id7", "descriere", 2,16);
+        try {
+            service.addTema(tema7);
+        } catch (ValidationException exception) {
+            assertTrue(exception.getMessage().equals("Saptamana primirii trebuie sa fie intre 1-14."));
+            return; // Test passed
+        }
+        assertFalse(true);
+    }
+
+    @Test
+    public void addAssignmentWithSUCCESS(){
+        setup();
+        Tema temaOK = new Tema("idOK", "descriereOK", 3,2);
+        try {
+            service.addTema(temaOK);
+        } catch (ValidationException exception) {
+            System.out.println(exception);
+            assertFalse(true);
+        }
+        assert (service.findTema("idOK") != null);
+    }
+
 }
