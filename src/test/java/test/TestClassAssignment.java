@@ -48,6 +48,19 @@ public class TestClassAssignment {
     }
 
     @Test
+    public void addAssignmentWithNullId(){
+        setup();
+        Tema tema2 = new Tema(null, "descriere", 3,2);
+        try {
+            service.addTema(tema2);
+        } catch (ValidationException exception) {
+            assertTrue(exception.getMessage().equals("Numar tema invalid!"));
+            return; // Test passed
+        }
+        assertFalse(true);
+    }
+
+    @Test
     public void addAssignmentWithEmptyDescription(){
         setup();
         Tema tema1 = new Tema("id1", "", 3,2);
