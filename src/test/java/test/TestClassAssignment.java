@@ -42,7 +42,7 @@ public class TestClassAssignment {
             service.addTema(tema1);
         } catch (ValidationException exception) {
             assertTrue(exception.getMessage().equals("Numar tema invalid!"));
-            return; // Test passed
+            return;
         }
         assertFalse(true);
     }
@@ -55,7 +55,7 @@ public class TestClassAssignment {
             service.addTema(tema2);
         } catch (ValidationException exception) {
             assertTrue(exception.getMessage().equals("Numar tema invalid!"));
-            return; // Test passed
+            return;
         }
         assertFalse(true);
     }
@@ -68,7 +68,7 @@ public class TestClassAssignment {
             service.addTema(tema3);
         } catch (ValidationException exception) {
             assertTrue(exception.getMessage().equals("Descriere invalida!"));
-            return; // Test passed
+            return;
         }
         assertFalse(true);
     }
@@ -81,7 +81,7 @@ public class TestClassAssignment {
             service.addTema(tema4);
         } catch (ValidationException exception) {
             assertTrue(exception.getMessage().equals("Deadlineul trebuie sa fie intre 1-14."));
-            return; // Test passed
+            return;
         }
         assertFalse(true);
     }
@@ -94,7 +94,7 @@ public class TestClassAssignment {
             service.addTema(tema5);
         } catch (ValidationException exception) {
             assertTrue(exception.getMessage().equals("Deadlineul trebuie sa fie intre 1-14."));
-            return; // Test passed
+            return;
         }
         assertFalse(true);
     }
@@ -107,7 +107,7 @@ public class TestClassAssignment {
             service.addTema(tema6);
         } catch (ValidationException exception) {
             assertTrue(exception.getMessage().equals("Saptamana primirii trebuie sa fie intre 1-14."));
-            return; // Test passed
+            return;
         }
         assertFalse(true);
     }
@@ -119,7 +119,7 @@ public class TestClassAssignment {
             service.addTema(tema7);
         } catch (ValidationException exception) {
             assertTrue(exception.getMessage().equals("Saptamana primirii trebuie sa fie intre 1-14."));
-            return; // Test passed
+            return; 
         }
         assertFalse(true);
     }
