@@ -120,5 +120,48 @@ public class TestClassGrade {
 
     }
 
+    @Test
+    public void addStudentAssignmenWithSUCCESS(){
+        setup();
+        String id = "idcusuccess2";
+        String nume = "stefanaaaa";
+        int grupa = 934;
+        String email = "stefanaaaaa@gmail.com";
+
+        Student student = new Student(id, nume, grupa, email);
+        try {
+            service.addStudent(student);
+        } catch (ValidationException exception) {
+            System.out.println(exception);
+            assertFalse(true);
+        }
+        assert (service.findStudent(id) != null);
+
+        Tema temaOK = new Tema("idCuSuccess2", "descriereSuccess2", 4,3);
+        try {
+            service.addTema(temaOK);
+        } catch (ValidationException exception) {
+            System.out.println(exception);
+            assertFalse(true);
+        }
+        assert (service.findTema("idCuSuccess2") != null);
+    }
+
+    @Test
+    public void addStudentAssignmentAlreadyCreatedGradeWithSUCCESS(){
+        setup();
+        Nota notaOK = new Nota("idGradeCuSuccess2", "idcusuccess2", "idCuSuccess2", 10, LocalDate.of(2024,4,21));
+        try {
+            service.addNota(notaOK, "feedback");
+        } catch (ValidationException exception) {
+            System.out.println(exception);
+            assertFalse(true);
+        }
+        assert (service.findNota("idGradeCuSuccess2") != null);
+
+    }
+
+
+
 
 }

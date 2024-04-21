@@ -4,3 +4,9 @@ Nota: 10.0
 Predata in saptamana: 1
 Deadline: 3
 Feedback: feedback
+
+Tema: idCuSuccess
+Nota: 10.0
+Predata in saptamana: 1
+Deadline: 3
+Feedback: feedback
